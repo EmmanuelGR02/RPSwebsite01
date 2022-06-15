@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         <title>RPSgame</title>
+
+        <link rel="stylesheet" href="RPScss.css">
+
+    </head>
+
+    <body>
+        
+
+        <h1><span>RPS</span> Game</h1>
+
+
+        <div class="div compImg" id="compPic"></div>
+        <div class="div playerImg" id="playerPic"></div>
+
+        <script type = "text/javascript">
+            
+            function displayname() {
+                let text = document.getElementById("playername").value;
+
+                document.getElementById("name").innerHTML = text;
+                document.getElementById("vs").innerHTML = "VS";
+                document.getElementById("opponent").innerHTML = "COMPUTER";
+                playerChoice();
+                computerChoice();  
+                winner()
+            }
+           
+            function computerChoice() {
+                var img = document.createElement("img");
+                var div = document.getElementById("compPic");
+                var randNum = Math.floor(Math.random() * 3) + 1
+
+                if (randNum == 1) {
+                    img.src = "rock.jpg";
+                    return div.appendChild(img);
+                }
+                else if (randNum == 2) {
+                    img.src = "paper.jpg";
+                    return div.appendChild(img);
+                }
+                else if (randNum == 3) {
+                    img.src = "scissors.jpg";
+                    return div.appendChild(img);
+                }
+                
+            }
+
+            function playerChoice() {
+                var img = document.createElement("img");
+                var div = document.getElementById("playerPic");
+                var playerChoice = prompt("What is your choice? (1) rock, (2) paper, (3) scissors: ")
+
+                if (playerChoice == 1) {
+                    img.src = "rock.jpg";
+                    return div.appendChild(img);
+                }
+                else if (playerChoice == 2) {
+                    img.src = "paper.jpg";
+                    return div.appendChild(img);
+                }
+                else if (playerChoice == 3) {
+                    img.src = "scissors.jpg";
+                    return div.appendChild(img);
+                }
+
+            }
+
+            function winner() {
+                let text = document.getElementById("playername").value;
+                let computerChoice = computerChoice();
+                let playerChoice = playerChoice();
+
+                if (computerChoice == 1 && playerChoice == 2) {
+                    return document.getElementById("winner") + text;
+                }
+                else {
+                    return document.getElementById("winner") + "no one";
+                }
+            }
+        </script>
+
+       <center><input type="text" id="playername" placeholder="Enter your name"/></center>
+       
+        <center><button class="button button1"  onclick="displayname()" id="button" name="button" value="Enter" type="submit">Enter</button></center>
+
+        <hr>
+
+        <p class="p playername" id="name"></p>
+        <p class="p vs" id="vs"></p>
+        <p class="p opponentname" id="opponent"></p>
+        
+        <h1 class="h1 winner" id="winner" >The Winner is... </h1>
+    </body>
+</html>
